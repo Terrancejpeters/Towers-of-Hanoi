@@ -17,7 +17,11 @@ public class RecursiveMath {
 	 */
 	public boolean isEven(int val) {
 		// Without recursion this could be: return val % 2 == 0;
-		return false;
+		if (!isOdd(val)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/**
@@ -28,7 +32,16 @@ public class RecursiveMath {
 	 */
 	public boolean isOdd(int val) {
 		// Without recursion this could be: return val % 2 == 1;
-		return false;
+		if (val < 0) {
+			val = (-1) * val;
+		}
+		if (val > 1) {
+			return isOdd(val - 2);
+		} else if (val == 1) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/**
@@ -40,7 +53,14 @@ public class RecursiveMath {
 	 *             if n is less than 0.
 	 */
 	public int sumN(int n) {
-		return -1;
+		if (n > 0) {
+			int sum = n + sumN(n - 1);
+			return sum;
+		} else if (n == 0) {
+			return 0;
+		} else {
+			throw new IllegalArgumentException("Value below 0");
+		}
 	}
 
 	/**
@@ -52,7 +72,14 @@ public class RecursiveMath {
 	 *             if n is less than 0.
 	 */
 	public int factorial(int n) {
-		return -1;
+		if (n < 0) {
+			throw new IllegalArgumentException("input less than 0");
+		}
+		if (n == 1) {
+			return 1;
+		} else {
+			return n * factorial(n - 1);
+		}
 	}
 
 	/**
@@ -64,6 +91,13 @@ public class RecursiveMath {
 	 *             if n is less than 0.
 	 */
 	public int biPower(int n) {
-		return -1;
+		if (n < 0) {
+			throw new IllegalArgumentException("input less than 0");
+		}
+		if (n > 0) {
+			return 2 * biPower(n - 1);
+		} else {
+			return 1;
+		}
 	}
 }
