@@ -9,14 +9,17 @@ public class ListImplementation<T> implements ListInterface<T> {
 	private Node<T> first = null;
 	private Node<T> last = null;
 
-	public ListImplementation(){
+	public ListImplementation() {
 	}
-	public ListImplementation(T data){
+
+	public ListImplementation(T data) {
 		first = new Node<T>(data, null);
 	}
-	public ListImplementation(Node<T> head){
+
+	public ListImplementation(Node<T> head) {
 		first = head;
 	}
+
 	@Override
 	public int size() {
 		// TODO Auto-generated method stub
@@ -36,7 +39,7 @@ public class ListImplementation<T> implements ListInterface<T> {
 	@Override
 	public T get(int n) throws NoSuchElementException {
 		Iterator<T> it = new listIterator<T>(first);
-		if (n > size-1 || n < 0) {
+		if (n > size - 1 || n < 0) {
 			throw new NoSuchElementException("Greater than size");
 		}
 		T temp = it.next();
@@ -53,7 +56,7 @@ public class ListImplementation<T> implements ListInterface<T> {
 		// TODO Auto-generated method stub
 		ListImplementation<T> rval = this;
 		size++;
-		if (elem == null){
+		if (elem == null) {
 			throw new NullPointerException();
 		}
 		if (first == null) {
@@ -72,8 +75,8 @@ public class ListImplementation<T> implements ListInterface<T> {
 	@Override
 	public Iterator<T> iterator() {
 		// TODO Auto-generated method stub
-			return new listIterator<T>(first);
-			//Make a new list iterator
+		return new listIterator<T>(first);
+		// Make a new list iterator
 	}
 
 }

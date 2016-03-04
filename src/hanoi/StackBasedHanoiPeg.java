@@ -10,6 +10,7 @@ import structures.LinkedStack;
 public class StackBasedHanoiPeg implements HanoiPeg {
 
 	private LinkedStack<HanoiRing> Peg;
+
 	/**
 	 * Creates a new {@link StackBasedHanoiPeg} that has no rings.
 	 */
@@ -19,20 +20,18 @@ public class StackBasedHanoiPeg implements HanoiPeg {
 
 	@Override
 	public void addRing(HanoiRing ring) throws IllegalHanoiMoveException {
-		if (Peg.getSize() == 0){
+		if (Peg.getSize() == 0) {
 			Peg.push(ring);
-		}
-		else if (Peg.peek().getSize() > ring.getSize()){
+		} else if (Peg.peek().getSize() > ring.getSize()) {
 			Peg.push(ring);
-		}
-		else{
+		} else {
 			throw new IllegalHanoiMoveException("Bad Move! Ring to add is greater than top ring...");
 		}
 	}
 
 	@Override
 	public HanoiRing remove() throws IllegalHanoiMoveException {
-		if (Peg.getSize() == 0){
+		if (Peg.getSize() == 0) {
 			throw new IllegalHanoiMoveException("Can't get Top Ring, Peg is Empty!");
 		}
 		return Peg.pop();
@@ -52,7 +51,8 @@ public class StackBasedHanoiPeg implements HanoiPeg {
 		else
 			return false;
 	}
-	public int getSize(){
+
+	public int getSize() {
 		return Peg.getSize();
 	}
 }

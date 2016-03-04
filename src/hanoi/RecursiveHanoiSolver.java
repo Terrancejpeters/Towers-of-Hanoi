@@ -5,7 +5,7 @@ import structures.ListInterface;
 
 /**
  * A {@link RecursiveHanoiSolver} implements the {@link HanoiSolver} taking
- * advantage of recursion. See Chapter 3.3 of DJW and 
+ * advantage of recursion. See Chapter 3.3 of DJW and
  * {@link http://en.wikipedia.org/wiki/Tower_of_Hanoi}.
  * 
  */
@@ -24,8 +24,12 @@ public class RecursiveHanoiSolver {
 	 * @param auxPeg
 	 *            a peg that we may utilize when needed to accomplish the task
 	 */
-	private void solverHelper(int n, int fromPeg, int toPeg, int auxPeg)
-			throws IllegalHanoiMoveException {
+	private void solverHelper(int n, int startPeg, int endPeg, int auxPeg) throws IllegalHanoiMoveException {
+		if (n > 0) {
+			solverHelper(n - 1, startPeg, auxPeg, endPeg);
+			moves.append(new HanoiMove(startPeg, endPeg));
+			solverHelper(n - 1, auxPeg, endPeg, startPeg);
+		}
 	}
 
 	/**

@@ -5,16 +5,17 @@ import java.util.NoSuchElementException;
 
 public class listIterator<T> implements Iterator<T> {
 	private Node<T> head;
-	public listIterator(Node<T> in){
+
+	public listIterator(Node<T> in) {
 		head = in;
 	}
+
 	@Override
 	public boolean hasNext() {
 		// TODO Auto-generated method stub
-		if (head != null){
+		if (head != null) {
 			return true;
-		}
-		else{
+		} else {
 			return false;
 		}
 	}
